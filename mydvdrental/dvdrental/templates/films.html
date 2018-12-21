@@ -1,0 +1,142 @@
+{% load static%}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+
+    <title>Rent Dvd's</title>
+
+    <!-- Bootstrap core CSS -->
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+
+
+</head>
+
+<body>
+    <div class="container">
+        <!-- navigation begin-->
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo01"
+                aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
+                <a class="navbar-brand" href="#">DVD rentals</a>
+                <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="{% url 'add_film' %}">Add film <span class="sr-only">(current)</span></a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+        <!-- navigation end-->
+
+        <!-- form data-->
+        <br/>
+        <br/>
+
+        <div class="card">
+            <div class="card-header">
+                Add a new Film
+            </div>
+            <div class="card-block">
+        <br/>
+        <form action="{% url 'add_film' %}" method="POST">
+            {% csrf_token %}
+            <!-- <input type="hidden" name="csrf-token" value="{{csrf_token}}"> -->
+            <div class="form-group">
+            <div class="row">
+                <div class="col">
+                    <input type="text" class="form-control" placeholder="Title" name="title" required>
+                </div>
+                <div class="col">
+                    <input type="text" class="form-control" placeholder="Description" name="description" required>
+                </div>
+            </div>
+            </div>
+
+            <div class="form-group">
+            <div class="row">
+                <div class="col">
+                    <input type="text" class="form-control" placeholder="Release Year" name="year" required>
+                </div>
+                <div class="col">
+                    <label for="language">Language</label>
+                    <select class="form-control" id="language" name="language">
+                        <option>English</option>
+                        <option>Italian</option>
+                        <option>Japanese</option>
+                        <option>Mandarin</option>
+                        <option>French</option>
+                        <option></option>
+                    </select>
+                </div>
+            </div>
+            </div>
+
+            <div class="form-group">
+            <div class="row">
+                <div class="col">
+                    <input type="number" class="form-control" placeholder="Rental Duration"
+                    name="duration" min="0" data-bind="value:duration" required>
+                </div>
+                <div class="col">
+                    <input type="number" class="form-control" placeholder="rental Rate"
+                    name="rate" min="0" data-bind="value:rate" required>
+                </div>
+            </div>
+            </div>
+
+            <div class="form-group">
+            <div class="row">
+                <div class="col">
+                    <input type="number" class="form-control" placeholder="Film Length"
+                    name="length" min="0" data-bind="value:length" required>
+                </div>
+                <div class="col">
+                    <input type="number" class="form-control" placeholder="Replacement cost"
+                    name="cost" required>
+                </div>
+            </div>
+            <br/>
+            <div class="form-group">
+                <div class="row">
+                    <div class="col">
+                        <label for="rating">Rating</label>
+                        <select class="form-control" id="rate" name="rating">
+                            <option>PG</option>
+                            <option>R</option>
+                            <option>PG-13</option>
+                            <option>G</option>
+
+                        </select>
+                    </div>
+                    <div class="col">
+                        <button type="submit" class="btn btn-primary">Add Film</button>
+                    </div>
+                </div>
+            </div>
+
+            </div>
+
+        </form>
+        </div>
+        </div>
+        <!-- end form data-->
+
+    </div><!-- /.container -->
+
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="{% static 'js/bootstrap.min.js' %}"></script>
+</body>
+
+</html>
